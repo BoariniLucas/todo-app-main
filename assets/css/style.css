@@ -1,5 +1,81 @@
+:root {
+    --white : #fff;
+    --gbColorPrincipal: #181824;
+    --bgColorTodoList: #25273c;
+    --fontColorPlaceholder: #787a91;
+    --fontColor: #cbcde6;
+}
+
+
+body{
+    font-size: 18px;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: var(--gbColorPrincipal);
+}
+
 header {
-    height: 50px;
-    width: 100vw;
-    background: url(../images/bg-desktop-dark.jpg);
+    height: 45vh;
+    width: 100%;
+    background: url(../images/bg-desktop-dark.jpg) no-repeat;
+    background-size: cover;
+}
+
+main {
+    display: flex;
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 27px;
+    font-weight: bold;
+    color: var(--white);
+    letter-spacing: 10px;
+}
+
+.list-container {
+    display: flex;
+    height: 450px;
+    width: 400px;
+    flex-direction: column;
+    background-color: brown;
+}
+
+.list-title {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.button-theme {
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    height: 27px;
+    width: 27px;
+    cursor: pointer;
+}
+
+.button-theme input {
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.button-theme img {
+    position: absolute;
+}
+
+.input-todo {
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    padding: 15px 10px;
+    margin: 30px 0 20px 0;
+    box-sizing: border-box;
+    background-color: var(--bgColorTodoList);
 }

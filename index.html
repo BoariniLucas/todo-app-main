@@ -6,18 +6,46 @@
 
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
 
     
     <title>Todo app</title>
 
   </head>
   <body>
+
     <header></header>
+
+    <main>
+      <form class="list-container">
+
+        <div class="list-title">
+          <h1>TODO</h1>
+
+          <label class="button-theme">
+            <input type="checkbox" id="checkbox-theme">
+            <img class="image-theme" src="./assets/images/icon-sun.svg" id="image-theme">
+          </label>
+        </div>
+
+    
+        <div>
+          <input type="text" class="input-todo" placeholder="Create a new todo...">
+        </div>
+
+      </form>
+    </main>
+    
+
+
+    <!--
 
     Todo
 
-    <!-- Add dynamic number --> items left
+    <''-- Add dynamic number --''> items left
 
     All
     Active 
@@ -26,6 +54,13 @@
     Clear Completed
 
     Drag and drop to reorder list
+
+    -->
+    
+
+
+
+
 
     <!--
 
@@ -36,6 +71,6 @@
 
     -->
 
-
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
