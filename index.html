@@ -17,7 +17,7 @@
   </head>
   <body>
 
-    <header></header>
+    <header class="header-image"></header>
 
     <main>
       <form class="list-container">
@@ -27,40 +27,68 @@
 
           <label class="button-theme">
             <input type="checkbox" id="checkbox-theme">
-            <img class="image-theme" src="./assets/images/icon-sun.svg" id="image-theme">
+            <img class="image-theme" id="image-theme" src="./assets/images/icon-sun.svg">
           </label>
         </div>
 
     
-        <div>
-          <input type="text" class="input-todo" placeholder="Create a new todo...">
+        <div class="div-input-todo">
+
+          <div class="text-item">
+            <label class="btn-check-item">
+              <input type="checkbox" id="checkbox-item">
+              <img id="image-btn-check-item" src="">
+            </label>
+
+            <input type="text" placeholder="Create a new todo...">   
+          </div>          
+          
+          <label class="btn-delete-item">
+            <input type="checkbox" id="checkbox-delete-item">
+            <img id="image-btn-delete-item" src="./assets/images/icon-cross.svg">
+          </label>
         </div>
 
+        <div class="list-itens">
+          <div class="item">
+
+          </div>
+
+          <div class="item">
+
+          </div>
+
+          <div class="item">
+
+          </div>
+        </div>
+
+        <div class="menu">
+          <span><a>0</a> items left</span>
+
+          <div class="filter">
+            <label>
+              <input type="radio" id="btn-all" name="filter">
+              <a>All</a>
+            </label>
+
+            <label>
+              <input type="radio" id="btn-active" name="filter">
+              <a>Active</a>
+            </label>
+
+            <label>
+              <input type="radio" id="btn-completed" name="filter">
+              <a>Completed</a>
+            </label>
+          </div>
+
+          <div>
+            <button>Clear Completed</button>
+          </div>         
+        </div>
       </form>
     </main>
-    
-
-
-    <!--
-
-    Todo
-
-    <''-- Add dynamic number --''> items left
-
-    All
-    Active 
-    Completed
-
-    Clear Completed
-
-    Drag and drop to reorder list
-
-    -->
-    
-
-
-
-
 
     <!--
 

@@ -2,22 +2,26 @@
     --white : #fff;
     --gbColorPrincipal: #181824;
     --bgColorTodoList: #25273c;
+    --ckTodoList: #303247;
     --fontColorPlaceholder: #787a91;
     --fontColor: #cbcde6;
+    --btnCheckItemColor1: #69c5ff;
+    --btnCheckItemColor2: #a572f0;
+    --itemBorderColor: #37394e;
+    --btnMenuChecked: #5676be;
+    --principalFont: 'Josefin Sans', sans-serif;
 }
 
 
 body{
     font-size: 18px;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: var(--principalFont);
     background-color: var(--gbColorPrincipal);
 }
 
 header {
     height: 45vh;
     width: 100%;
-    background: url(../images/bg-desktop-dark.jpg) no-repeat;
-    background-size: cover;
 }
 
 main {
@@ -37,10 +41,24 @@ h1 {
     letter-spacing: 10px;
 }
 
+input:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+} 
+
+.header-image {
+    background: url(../images/bg-desktop-dark.jpg) no-repeat;
+    background-size: cover;
+}
+
+/*--  Start: Principal form and title --*/
+/*--                ---               --*/
+
 .list-container {
     display: flex;
-    height: 450px;
-    width: 400px;
+    height: 500px;
+    width: 450px;
     flex-direction: column;
     background-color: brown;
 }
@@ -70,12 +88,161 @@ h1 {
     position: absolute;
 }
 
-.input-todo {
+/*--               ---              --*/
+/*--  End: Principal form and title --*/
+
+
+/*--  Start: Add item --*/
+/*--        ---       --*/
+
+.div-input-todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 52px;
     width: 100%;
-    border: none;
     border-radius: 4px;
-    padding: 15px 10px;
+    padding: 15px 15px;
     margin: 30px 0 20px 0;
     box-sizing: border-box;
     background-color: var(--bgColorTodoList);
 }
+
+.text-item {
+    display: flex;
+    align-items: center;
+}
+
+.btn-check-item {
+    display: flex;
+    height: 20px;
+    width: 20px;
+    justify-content: center;
+    align-items: center;
+    border: solid var(--ckTodoList);
+    border-width: 1px;
+    border-radius: 50%;
+    background-image: '';
+    cursor: pointer;
+}
+
+.btn-check-item input {
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.btn-check-item  img {
+    position: absolute;
+}
+
+.div-input-todo input {
+    font-family: var(--principalFont);
+    border: none;
+    background: none;
+    margin-left: 8px;
+    color: var(--fontColorPlaceholder);
+}
+
+/*--        ---       --*/
+/*--  End: Add item --*/
+
+
+.btn-delete-item {
+    display: flex;
+    justify-content: center;
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+}
+
+.btn-delete-item input {
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.btn-delete-item img {
+    position: absolute;
+}
+
+.list-itens {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    border-radius: 4px;
+    padding-top: 5px;
+    box-sizing: border-box;
+    background-color: var(--bgColorTodoList);
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 52px;
+    width: 100%;
+    border-bottom: solid var(--itemBorderColor);
+    border-width: 1px;
+    padding: 15px 15px;
+    box-sizing: border-box;
+    background-color: var(--bgColorTodoList);
+}
+
+/*--  Start: Menu bar  --*/
+/*--        ---        --*/
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    padding: 15px 15px;
+    box-sizing: border-box;
+    background-color: var(--bgColorTodoList);
+}
+
+.menu span {
+    font-size: 14px;
+    color: var(--fontColorPlaceholder);
+}
+
+.menu label {
+    font-size: 14px;
+    color: var(--fontColorPlaceholder);
+    cursor: pointer;
+}
+
+.menu label:hover {
+    color: var(--fontColor);
+}
+
+.menu label input {
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.menu label input:checked + a {
+    color: var(--btnMenuChecked);
+}
+
+.menu button {
+    font-size: 14px;
+    border: none;
+    font-family: var(--principalFont);
+    color: var(--fontColorPlaceholder);
+    background-color: var(--bgColorTodoList);
+}
+
+.menu button:hover {
+    color: var(--fontColor);
+    cursor: pointer;
+}
+
+/*--       ---       --*/
+/*--  End: Menu bar  --*/
