@@ -148,7 +148,8 @@ input:focus, select:focus {
 /*--  End: Add item --*/
 
 
-.btn-delete-item {
+.btn-add-item {
+    visibility: hidden;
     display: flex;
     justify-content: center;
     height: 18px;
@@ -156,13 +157,13 @@ input:focus, select:focus {
     cursor: pointer;
 }
 
-.btn-delete-item input {
+.btn-add-item input {
     opacity: 0;
     height: 0;
     width: 0;
 }
 
-.btn-delete-item img {
+.btn-add-item img {
     position: absolute;
 }
 
