@@ -25,6 +25,25 @@ btnAddItem.addEventListener('click', (e) => {
 
 
 
+/*
+<div class="item">
+            <div>
+              <label class="btn-check-item">
+                <input type="checkbox" id="checkbox-item">
+                <img id="image-btn-check-item" src="">
+              </label>
+
+              <a class="todo-item">Teste de todo</a>  
+            </div>          
+          
+            <label class="btn-delete-item">
+              <input type="checkbox" id="checkbox-delete-item">
+              <img id="image-btn-delete-item" src="./assets/images/icon-cross.svg">
+            </label>       
+          </div>
+
+*/
+
 
 checkbocTheme.addEventListener('change', () => {
     if(checkbocTheme.checked == true) {
