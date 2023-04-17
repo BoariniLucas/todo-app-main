@@ -113,6 +113,18 @@ input:focus, select:focus {
     align-items: center;
 }
 
+.text-item input::placeholder {
+    color: var(--fontColorPlaceholder);
+}
+
+.circle-style {
+    height: 20px;
+    width: 20px;
+    border: solid var(--ckTodoList);
+    border-width: 1px;
+    border-radius: 50%;
+}
+
 .btn-check-item {
     display: flex;
     height: 20px;
@@ -191,6 +203,43 @@ input:focus, select:focus {
     background-color: var(--bgColorTodoList);
 }
 
+.item input {
+    font-family: var(--principalFont);
+    border: none;
+    background: none;
+    margin-left: 8px;
+    color: var(--fontColorPlaceholder);
+}
+
+.item div {
+    display: flex;
+    align-items: center;
+}
+
+.todo-item {
+    font-size: 14px;
+    margin-left: 8px;
+    color: var(--fontColorPlaceholder);
+}
+
+.btn-delete-item {
+    display: flex;
+    justify-content: center;
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+}
+
+.btn-delete-item input {
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.btn-delete-item img {
+    position: absolute;
+}
+
 /*--  Start: Menu bar  --*/
 /*--        ---        --*/
 
@@ -247,3 +296,58 @@ input:focus, select:focus {
 
 /*--       ---       --*/
 /*--  End: Menu bar  --*/
+
+
+
+
+
+
+
+/*--  teste  --*/
+
+.ck-button {
+    height: 20px;
+    width: 20px;
+    border: solid var(--ckTodoList);
+    border-width: 1px;
+    border-radius: 50%;
+    background-color: var(--bgColorTodoList);
+    cursor: pointer;
+}
+
+.done {
+    text-align: center;    
+    background-image: linear-gradient(to right, var(--btnCheckItemColor1) , var(--btnCheckItemColor2));
+    text-decoration: line-through;
+}
+
+.delete-button {
+    height: 18px;
+    width: 18px;
+    background-color: var(--bgColorTodoList);
+    background-image: url(../images/icon-cross.svg);
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+}
+
+.todo-text {
+    font-size: 14px;
+    margin-left: 8px;
+    color: var(--fontColorPlaceholder);
+}
+
+.done-text {
+    text-decoration: line-through;
+    color: var(--fontColorPlaceholder);
+}
+
+
+
+
+
+
+
+
+
+
