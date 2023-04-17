@@ -11,12 +11,13 @@ const imageTheme = document.querySelector('#image-theme');
 const imageBtnCheckItem = document.querySelector('#image-btn-check-item')
 const imagesBg = document.querySelector('.header-image');
 
-
-/*   --Events--   */
-
+let qtdTodos = 0;
 
 
+/*     ----Events----     */
 
+
+/* Add new todo */
 btnAddItem.addEventListener('click', (e) => {
 
     e.preventDefault();
@@ -56,6 +57,7 @@ btnAddItem.addEventListener('click', (e) => {
 });
 
 
+/* Delete or mark as done */
 listItens.addEventListener('click', (e) => {
 
     e.preventDefault();
@@ -76,73 +78,24 @@ listItens.addEventListener('click', (e) => {
 });
 
 
-
-/*
-<div class="item">
-            <div>
-              <label class="btn-check-item">
-                <input type="checkbox" id="checkbox-item">
-                <img id="image-btn-check-item" src="">
-              </label>
-
-              <a class="todo-item">Teste de todo</a>  
-            </div>          
-          
-            <label class="btn-delete-item">
-              <input type="checkbox" id="checkbox-delete-item">
-              <img id="image-btn-delete-item" src="./assets/images/icon-cross.svg">
-            </label>       
-          </div>
-
-*/
-
-
-
-
-
-
-/*
-<div class="item">
-            <div>
-              <label class="btn-check-item">
-                <input type="checkbox" id="checkbox-item">
-                <img id="image-btn-check-item" src="">
-              </label>
-
-              <a class="todo-item">Teste de todo</a>  
-            </div>          
-          
-            <label class="btn-delete-item">
-              <input type="checkbox" id="checkbox-delete-item">
-              <img id="image-btn-delete-item" src="./assets/images/icon-cross.svg">
-            </label>       
-          </div>
-
-*/
-
-
-
-
-
-
-
-
-
-
+/* Switch theme */
 checkboxTheme.addEventListener('change', () => {
-    if(checkbocTheme.checked == true) {
+    if(checkboxTheme.checked == true) {
         imageTheme.src="./assets/images/icon-moon.svg";
         imagesBg.style.background = "url(assets/images/bg-desktop-light.jpg)";
+
     } else {
         imageTheme.src="./assets/images/icon-sun.svg";
         imagesBg.style.background = "url(assets/images/bg-desktop-dark.jpg)";
     }
 });
 
+
 checkboxItem.addEventListener('change', () => {
     if(checkboxItem.checked == true) {
         imageBtnCheckItem.src="";
         btnCheckItem.style.backgroundImage = 'none';
+        
     } else {
         imageBtnCheckItem.src="./assets/images/icon-check.svg";
         btnCheckItem.style.backgroundImage = "linear-gradient(to right, var(--btnCheckItemColor1) , var(--btnCheckItemColor2))";
@@ -150,27 +103,7 @@ checkboxItem.addEventListener('change', () => {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*   --Functions--   */
+/*     ----Functions----     */
 
 function btnEntryVisible(value) {
     if (value != "") {
@@ -181,20 +114,4 @@ function btnEntryVisible(value) {
 function clearNewTodo() {
     newTodoEntry.value = '';
     btnAddItemClass.style.visibility = 'hidden';
-}
-
-
-function deuCerto(e) {
-    if(checkboxItem.checked == true) {
-        e.src="";
-        e.style.backgroundImage = 'none';
-
-        console.log("checado");
-
-    } else {
-        e.src="./assets/images/icon-check.svg";
-        e.style.backgroundImage = "linear-gradient(to right, var(--btnCheckItemColor1) , var(--btnCheckItemColor2))";
-
-        console.log("desssschecado");
-    }
 }

@@ -108,6 +108,14 @@ input:focus, select:focus {
     background-color: var(--bgColorTodoList);
 }
 
+.div-input-todo input {
+    font-family: var(--principalFont);
+    border: none;
+    background: none;
+    margin-left: 8px;
+    color: var(--fontColorPlaceholder);
+}
+
 .text-item {
     display: flex;
     align-items: center;
@@ -124,41 +132,6 @@ input:focus, select:focus {
     border-width: 1px;
     border-radius: 50%;
 }
-
-.btn-check-item {
-    display: flex;
-    height: 20px;
-    width: 20px;
-    justify-content: center;
-    align-items: center;
-    border: solid var(--ckTodoList);
-    border-width: 1px;
-    border-radius: 50%;
-    background-image: '';
-    cursor: pointer;
-}
-
-.btn-check-item input {
-    opacity: 0;
-    height: 0;
-    width: 0;
-}
-
-.btn-check-item  img {
-    position: absolute;
-}
-
-.div-input-todo input {
-    font-family: var(--principalFont);
-    border: none;
-    background: none;
-    margin-left: 8px;
-    color: var(--fontColorPlaceholder);
-}
-
-/*--        ---       --*/
-/*--  End: Add item --*/
-
 
 .btn-add-item {
     visibility: hidden;
@@ -178,6 +151,13 @@ input:focus, select:focus {
 .btn-add-item img {
     position: absolute;
 }
+
+/*--       ---      --*/
+/*--  End: Add item --*/
+
+
+/*--  Start: Todo item --*/
+/*--        ---        --*/
 
 .list-itens {
     display: flex;
@@ -203,42 +183,51 @@ input:focus, select:focus {
     background-color: var(--bgColorTodoList);
 }
 
-.item input {
-    font-family: var(--principalFont);
-    border: none;
-    background: none;
-    margin-left: 8px;
-    color: var(--fontColorPlaceholder);
-}
-
 .item div {
     display: flex;
     align-items: center;
 }
 
-.todo-item {
+.ck-button {
+    height: 20px;
+    width: 20px;
+    border: solid var(--ckTodoList);
+    border-width: 1px;
+    border-radius: 50%;
+    background-color: var(--bgColorTodoList);
+    cursor: pointer;
+}
+
+.done {
+    text-align: center;    
+    background-image: linear-gradient(to right, var(--btnCheckItemColor1) , var(--btnCheckItemColor2));
+    text-decoration: line-through;
+}
+
+.todo-text {
     font-size: 14px;
     margin-left: 8px;
     color: var(--fontColorPlaceholder);
 }
 
-.btn-delete-item {
-    display: flex;
-    justify-content: center;
+.done-text {
+    text-decoration: line-through;
+    color: var(--fontColorPlaceholder);
+}
+
+.delete-button {
     height: 18px;
     width: 18px;
+    background-color: var(--bgColorTodoList);
+    background-image: url(../images/icon-cross.svg);
+    background-size: cover;
+    border: none;
     cursor: pointer;
 }
 
-.btn-delete-item input {
-    opacity: 0;
-    height: 0;
-    width: 0;
-}
+/*--       ---       --*/
+/*--  End: Todo item --*/
 
-.btn-delete-item img {
-    position: absolute;
-}
 
 /*--  Start: Menu bar  --*/
 /*--        ---        --*/
@@ -296,58 +285,3 @@ input:focus, select:focus {
 
 /*--       ---       --*/
 /*--  End: Menu bar  --*/
-
-
-
-
-
-
-
-/*--  teste  --*/
-
-.ck-button {
-    height: 20px;
-    width: 20px;
-    border: solid var(--ckTodoList);
-    border-width: 1px;
-    border-radius: 50%;
-    background-color: var(--bgColorTodoList);
-    cursor: pointer;
-}
-
-.done {
-    text-align: center;    
-    background-image: linear-gradient(to right, var(--btnCheckItemColor1) , var(--btnCheckItemColor2));
-    text-decoration: line-through;
-}
-
-.delete-button {
-    height: 18px;
-    width: 18px;
-    background-color: var(--bgColorTodoList);
-    background-image: url(../images/icon-cross.svg);
-    background-size: cover;
-    border: none;
-    cursor: pointer;
-}
-
-.todo-text {
-    font-size: 14px;
-    margin-left: 8px;
-    color: var(--fontColorPlaceholder);
-}
-
-.done-text {
-    text-decoration: line-through;
-    color: var(--fontColorPlaceholder);
-}
-
-
-
-
-
-
-
-
-
-
