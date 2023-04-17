@@ -20,22 +20,34 @@ const imagesBg = document.querySelector('.header-image');
 btnAddItem.addEventListener('click', (e) => {
 
     e.preventDefault();
-    const addTodo = e.target;
+    const addTodo = e.target;    
 
-    if(addTodo.classList.contains("btn-add-item")) {
+    if(addTodo.classList.contains("teste")) {
         const text = newTodoEntry.value;
 
         const todo = document.createElement("div");
         todo.classList.add("item")
 
+        const alignContainer = document.createElement("div");
+        alignContainer.classList.add("align");
+
         const butttonCheck = document.createElement("button");
         butttonCheck.classList.add("ck-button");
 
-        todo.appendChild(butttonCheck);
-        
-        listItens.appendChild(todo);
-        
+        const todoText = document.createElement("h2");
+        todoText.classList.add("todo-text");
+        todoText.innerHTML = text;      
 
+        const buttonDelete = document.createElement("button");
+        buttonDelete.classList.add("delete-button");
+
+        alignContainer.appendChild(butttonCheck);
+        alignContainer.appendChild(todoText);
+
+        todo.appendChild(alignContainer);
+        todo.appendChild(buttonDelete);
+        
+        listItens.appendChild(todo);    
 
         console.log(todo);
 
@@ -48,12 +60,18 @@ listItens.addEventListener('click', (e) => {
 
     e.preventDefault();
 
-    const teste = e.target;
-    const pai = teste.closest("div");
+    const buttonPress = e.target;
+    const todoItem = buttonPress.closest("div");
+    const todo = document.querySelector(".item");
 
-    if(teste.classList.contains("ck-button")) {
-        teste.classList.toggle("done");
+    if(buttonPress.classList.contains("delete-button")) {
 
+        todo.parentNode.removeChild(todoItem);
+
+    } else if(buttonPress.classList.contains("ck-button") ) {
+
+        buttonPress.classList.toggle("done");
+        todoItem.classList.toggle("done-text");
     }
 });
 
