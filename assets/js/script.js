@@ -11,7 +11,8 @@ const imageTheme = document.querySelector('#image-theme');
 const imageBtnCheckItem = document.querySelector('#image-btn-check-item')
 const imagesBg = document.querySelector('.header-image');
 
-let qtdTodos = 0;
+const qtdTodo = document.querySelector('#qtd-todos');
+let counter = 0;
 
 
 /*     ----Events----     */
@@ -50,7 +51,9 @@ btnAddItem.addEventListener('click', (e) => {
         
         listItens.appendChild(todo);    
 
-        console.log(todo);
+        
+        qtdTodo.innerHTML = counter += 1;
+
 
         clearNewTodo();
     }
@@ -67,8 +70,9 @@ listItens.addEventListener('click', (e) => {
     const todo = document.querySelector(".item");
 
     if(buttonPress.classList.contains("delete-button")) {
-
+        
         todo.parentNode.removeChild(todoItem);
+        qtdTodo.innerHTML = counter -= 1;
 
     } else if(buttonPress.classList.contains("ck-button") ) {
 
@@ -95,7 +99,7 @@ checkboxItem.addEventListener('change', () => {
     if(checkboxItem.checked == true) {
         imageBtnCheckItem.src="";
         btnCheckItem.style.backgroundImage = 'none';
-        
+
     } else {
         imageBtnCheckItem.src="./assets/images/icon-check.svg";
         btnCheckItem.style.backgroundImage = "linear-gradient(to right, var(--btnCheckItemColor1) , var(--btnCheckItemColor2))";
