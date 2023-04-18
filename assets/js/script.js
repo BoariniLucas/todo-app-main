@@ -4,6 +4,7 @@ const checkboxItem = document.querySelector('#checkbox-item');
 const btnCheckItem = document.querySelector('.btn-check-item');
 const btnAddItem = document.querySelector('#btn-add-item');
 const btnAddItemClass = document.querySelector('.btn-add-item');
+const btnClearCompleted = document.querySelector("#btn-clear-completed");
 const newTodoEntry = document.querySelector('#new-todo-entry');
 const listItens = document.querySelector('#list-itens');
 
@@ -20,71 +21,24 @@ checkboxTheme.checked == false;
 
 /*     ----Events----     */
 
-function filterTodo() {
 
-    let rdButton = document.getElementsByName("filter");
-    let i = 0;
+/* Clear Completed */
+btnClearCompleted.addEventListener('click', (e) => {
+    e.preventDefault();
 
-    for (i in rdButton) {
-        if (rdButton[i].checked && rdButton[i].value == "all") {      
-            filterAll();
-
-        } else if (rdButton[i].checked && rdButton[i].value == "active") {
-            filterAll();
-            filterActive();
-
-        } else if (rdButton[i].checked && rdButton[i].value == "completed") {
-            filterAll();
-            filterCompleted();
-        }
-    }
-}
-
-function filterAll() {
-    const todo = listItens.getElementsByClassName("item");
-
-    for( i=0; i< todo.length; i++ ) {
-        
-        todo[i].style.display = "flex";
-        
-    }
-}
-
-function filterActive() {
-    const todo = listItens.getElementsByClassName("item");
-
-    for( i=0; i< todo.length; i++ ) {
-              
-        if(todo[i].className == "item") {
-            
-            console.log(todo[i]);
-        } else {
-            todo[i].style.display = "none";
-        }
-    }
-}
-
-function filterCompleted() {
     const todo = listItens.getElementsByClassName("item");
 
     for( i=0; i< todo.length; i++ ) {
               
         if(todo[i].className == "item ok") {
             
-            console.log(todo[i]);
-        } else {
-            todo[i].style.display = "none";
+            todo[i].remove();
+            i--;
+            
+            qtdTodo.innerHTML = (counter -= 1);
         }
-    }    
-}
-
-
-
-
-
-
-
-
+    }   
+});
 
 /* Add new todo */
 btnAddItem.addEventListener('click', (e) => {
@@ -119,9 +73,9 @@ btnAddItem.addEventListener('click', (e) => {
         
         listItens.appendChild(todo);    
 
-        
-        qtdTodo.innerHTML = counter += 1;
+        qtdTodo.innerHTML = (counter += 1);
 
+        newTodoEntry.focus();
 
         clearNewTodo();
     }
@@ -140,7 +94,7 @@ listItens.addEventListener('click', (e) => {
     if(buttonPress.classList.contains("delete-button")) {
         
         todo.parentNode.removeChild(todoItem);
-        qtdTodo.innerHTML = counter -= 1;
+        qtdTodo.innerHTML = (counter -= 1);
 
     } else if(buttonPress.classList.contains("ck-button") ) {
 
@@ -173,7 +127,7 @@ checkboxTheme.addEventListener('change', () => {
     }
 });
 
-
+/* Check Button */
 checkboxItem.addEventListener('change', () => {
     if(checkboxItem.checked == true) {
         imageBtnCheckItem.src="";
@@ -199,9 +153,56 @@ function clearNewTodo() {
     btnAddItemClass.style.visibility = 'hidden';
 }
 
+/* Filters */
+function filterTodo() {
 
+    let rdButton = document.getElementsByName("filter");
+    let i = 0;
 
+    for (i in rdButton) {
+        if (rdButton[i].checked && rdButton[i].value == "all") {      
+            filterAll();
 
+        } else if (rdButton[i].checked && rdButton[i].value == "active") {
+            filterAll();
+            filterActive();
 
-/* testes de filtro */
+        } else if (rdButton[i].checked && rdButton[i].value == "completed") {
+            filterAll();
+            filterCompleted();
+        }
+    }
+}
 
+function filterAll() {
+    const todo = listItens.getElementsByClassName("item");
+
+    for( i=0; i< todo.length; i++ ) {
+        
+        todo[i].style.display = "flex";        
+    }
+}
+
+function filterActive() {
+    const todo = listItens.getElementsByClassName("item");
+
+    for( i=0; i< todo.length; i++ ) {
+              
+        if(todo[i].className != "item") {
+
+            todo[i].style.display = "none";
+        }
+    }
+}
+
+function filterCompleted() {
+    const todo = listItens.getElementsByClassName("item");
+
+    for( i=0; i< todo.length; i++ ) {
+              
+        if(todo[i].className != "item ok") {
+
+            todo[i].style.display = "none";
+        }
+    }    
+}
