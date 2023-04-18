@@ -14,6 +14,9 @@ const imagesBg = document.querySelector('.header-image');
 const qtdTodo = document.querySelector('#qtd-todos');
 let counter = 0;
 
+checkboxTheme.checked == false;
+
+
 
 /*     ----Events----     */
 
@@ -53,6 +56,7 @@ btnAddItem.addEventListener('click', (e) => {
 
         
         qtdTodo.innerHTML = counter += 1;
+        todo.setAttribute("id", counter);
 
 
         clearNewTodo();
@@ -88,9 +92,19 @@ checkboxTheme.addEventListener('change', () => {
         imageTheme.src="./assets/images/icon-moon.svg";
         imagesBg.style.background = "url(assets/images/bg-desktop-light.jpg)";
 
+        document.body.style.setProperty('--gbColorPrincipal', '#fafafa');
+        document.body.style.setProperty('--bgColorTodoList', '#ffffff');
+        document.body.style.setProperty('--itemBorderColor', '#e6e5e9');
+        document.body.style.setProperty('--fontColorPlaceholder', '#61626f');
+        
     } else {
         imageTheme.src="./assets/images/icon-sun.svg";
         imagesBg.style.background = "url(assets/images/bg-desktop-dark.jpg)";
+
+        document.body.style.setProperty('--gbColorPrincipal', '#181824');
+        document.body.style.setProperty('--bgColorTodoList', '#25273c');
+        document.body.style.setProperty('--itemBorderColor', '#37394e');
+        document.body.style.setProperty('--fontColorPlaceholder', '#787a91');
     }
 });
 
@@ -119,3 +133,10 @@ function clearNewTodo() {
     newTodoEntry.value = '';
     btnAddItemClass.style.visibility = 'hidden';
 }
+
+
+
+
+
+/* testes de filtro */
+

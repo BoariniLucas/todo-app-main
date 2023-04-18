@@ -209,11 +209,13 @@ input:focus, select:focus {
     font-size: 14px;
     margin-left: 8px;
     color: var(--fontColorPlaceholder);
+    cursor: pointer;
 }
 
 .done-text {
     text-decoration: line-through;
     color: var(--fontColorPlaceholder);
+    cursor: pointer;
 }
 
 .delete-button {
