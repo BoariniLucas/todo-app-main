@@ -68,23 +68,23 @@
 
           <div class="filter">
             <label>
-              <input type="radio" id="btn-all" name="filter" checked="true">
+              <input type="radio" id="btn-all" value="all" name="filter" onclick="filterTodo()" checked="true">
               <a>All</a>
             </label>
 
             <label>
-              <input type="radio" id="btn-active" name="filter">
+              <input type="radio" id="btn-active" value="active" name="filter" onclick="filterTodo()">
               <a>Active</a>
             </label>
 
             <label>
-              <input type="radio" id="btn-completed" name="filter">
+              <input type="radio" id="btn-completed" value="completed" name="filter" onclick="filterTodo()">
               <a>Completed</a>
             </label>
           </div>
 
           <div>
-            <button>Clear Completed</button>
+            <button id="btn-clear-completed">Clear Completed</button>
           </div>         
         </div>
       </form>
