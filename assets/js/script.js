@@ -1,26 +1,32 @@
 const checkboxTheme = document.querySelector('#checkbox-theme');
-const checkboxItem = document.querySelector('#checkbox-item');
-
-const btnCheckItem = document.querySelector('.btn-check-item');
 const btnAddItem = document.querySelector('#btn-add-item');
 const btnAddItemClass = document.querySelector('.btn-add-item');
 const btnClearCompleted = document.querySelector("#btn-clear-completed");
+
 const newTodoEntry = document.querySelector('#new-todo-entry');
 const listItens = document.querySelector('#list-itens');
 
 const imageTheme = document.querySelector('#image-theme');
-const imageBtnCheckItem = document.querySelector('#image-btn-check-item')
 const imagesBg = document.querySelector('.header-image');
 
 const qtdTodo = document.querySelector('#qtd-todos');
-let counter = 0;
 
+let theme = "dark";
+let counter = 0;
 checkboxTheme.checked == false;
 
 
 
 /*     ----Events----     */
 
+window.addEventListener('resize', () => {
+
+    if (window.innerWidth > 375) {
+        imagesBg.style.background = "url(assets/images/bg-desktop-"+theme+".jpg)";
+    } else {
+        imagesBg.style.background = "url(assets/images/bg-mobile-"+theme+".jpg)";        
+    }
+});
 
 /* Clear Completed */
 btnClearCompleted.addEventListener('click', (e) => {
@@ -76,7 +82,6 @@ btnAddItem.addEventListener('click', (e) => {
         qtdTodo.innerHTML = (counter += 1);
 
         newTodoEntry.focus();
-
         clearNewTodo();
     }
 });
@@ -89,7 +94,8 @@ listItens.addEventListener('click', (e) => {
 
     const buttonPress = e.target;
     const todoItem = buttonPress.closest("div");
-    const todo = document.querySelector(".item");    
+    const todo = document.querySelector(".item");
+    const teste = document.querySelector(".todo-text");
 
     if(buttonPress.classList.contains("delete-button")) {
         
@@ -97,6 +103,7 @@ listItens.addEventListener('click', (e) => {
         qtdTodo.innerHTML = (counter -= 1);
 
     } else if(buttonPress.classList.contains("ck-button") ) {
+
 
         buttonPress.classList.toggle("done");
         todoItem.classList.toggle("done-text");
@@ -108,37 +115,45 @@ listItens.addEventListener('click', (e) => {
 /* Switch theme */
 checkboxTheme.addEventListener('change', () => {
     if(checkboxTheme.checked == true) {
-        imageTheme.src="./assets/images/icon-moon.svg";
-        imagesBg.style.background = "url(assets/images/bg-desktop-light.jpg)";
+
+        if (window.innerWidth > 375) {
+            imagesBg.style.background = "url(assets/images/bg-desktop-light.jpg)";
+
+        } else {
+            imagesBg.style.background = "url(assets/images/bg-mobile-light.jpg)";
+        }
+
+        theme = "light";
+
+        imageTheme.src="./assets/images/icon-moon.svg";        
 
         document.body.style.setProperty('--gbColorPrincipal', '#fafafa');
         document.body.style.setProperty('--bgColorTodoList', '#ffffff');
         document.body.style.setProperty('--itemBorderColor', '#e6e5e9');
-        document.body.style.setProperty('--fontColorPlaceholder', '#61626f');
+        document.body.style.setProperty('--fontColorPlaceholder', '#c7c4c4');
+        document.body.style.setProperty('--fontColor', '#4e4c61');
+        document.body.style.setProperty('--ckTodoList', '#d8d6db');
 
     } else {
-        imageTheme.src="./assets/images/icon-sun.svg";
-        imagesBg.style.background = "url(assets/images/bg-desktop-dark.jpg)";
+
+        if (window.innerWidth > 375) {
+            imagesBg.style.background = "url(assets/images/bg-desktop-dark.jpg)";
+        } else {
+            imagesBg.style.background = "url(assets/images/bg-mobile-dark.jpg)";
+        }
+
+        theme = "dark";
+
+        imageTheme.src="./assets/images/icon-sun.svg";       
 
         document.body.style.setProperty('--gbColorPrincipal', '#181824');
         document.body.style.setProperty('--bgColorTodoList', '#25273c');
         document.body.style.setProperty('--itemBorderColor', '#37394e');
         document.body.style.setProperty('--fontColorPlaceholder', '#787a91');
+        document.body.style.setProperty('--fontColor', '#cbcde6');
+        document.body.style.setProperty('--ckTodoList', '#303247');
     }
 });
-
-/* Check Button */
-checkboxItem.addEventListener('change', () => {
-    if(checkboxItem.checked == true) {
-        imageBtnCheckItem.src="";
-        btnCheckItem.style.backgroundImage = 'none';
-
-    } else {
-        imageBtnCheckItem.src="./assets/images/icon-check.svg";
-        btnCheckItem.style.backgroundImage = "linear-gradient(to right, var(--btnCheckItemColor1) , var(--btnCheckItemColor2))";
-    }
-});
-
 
 /*     ----Functions----     */
 

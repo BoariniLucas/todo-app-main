@@ -1,0 +1,30 @@
+@media screen and (max-width: 375px) {
+
+    .header-image {
+        height: 30vh;
+        background: url(../images/bg-mobile-dark.jpg) no-repeat;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .list-container {
+        width: 330px;
+        box-sizing: border-box;
+    }
+
+    .text-item input {
+        width: 18em;
+    }
+
+    .menu {
+        justify-content: center;
+    }
+
+    .menu span { 
+        display: none;
+    }
+
+    .menu button {
+        display: none;
+    }
+}
