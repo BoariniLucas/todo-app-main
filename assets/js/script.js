@@ -17,7 +17,8 @@ checkboxTheme.checked == false;
 
 
 
-/*     ----Events----     */
+/*       ------Start: Events------       */
+/*              ------------             */
 
 window.addEventListener('resize', () => {
 
@@ -46,46 +47,18 @@ btnClearCompleted.addEventListener('click', (e) => {
     }   
 });
 
-/* Add new todo */
 btnAddItem.addEventListener('click', (e) => {
 
     e.preventDefault();
-    const addTodo = e.target;    
+    const addTodo = e.target;
 
     if(addTodo.classList.contains("teste")) {
-        const text = newTodoEntry.value;
 
-        const todo = document.createElement("div");
-        todo.classList.add("item")
+        const textTodo = newTodoEntry.value;
 
-        const alignContainer = document.createElement("div");
-        alignContainer.classList.add("align");
-
-        const butttonCheck = document.createElement("button");
-        butttonCheck.classList.add("ck-button");
-
-        const todoText = document.createElement("h2");
-        todoText.classList.add("todo-text");
-        todoText.innerHTML = text;      
-
-        const buttonDelete = document.createElement("button");
-        buttonDelete.classList.add("delete-button");
-
-        alignContainer.appendChild(butttonCheck);
-        alignContainer.appendChild(todoText);
-
-        todo.appendChild(alignContainer);
-        todo.appendChild(buttonDelete);
-        
-        listItens.appendChild(todo);    
-
-        qtdTodo.innerHTML = (counter += 1);
-
-        newTodoEntry.focus();
-        clearNewTodo();
+        addNewTodo(textTodo);
     }
 });
-
 
 /* Delete or mark as done */
 listItens.addEventListener('click', (e) => {
@@ -155,7 +128,45 @@ checkboxTheme.addEventListener('change', () => {
     }
 });
 
-/*     ----Functions----     */
+/*             ------------            */
+/*       ------End: Events------       */
+
+
+/*       ------End: Functions------       */
+/*             ------------               */
+
+/* Add new todo function */
+function addNewTodo(txText) {
+    
+    const todo = document.createElement("div");
+    todo.classList.add("item")
+
+    const alignContainer = document.createElement("div");
+    alignContainer.classList.add("align");
+
+    const butttonCheck = document.createElement("button");
+    butttonCheck.classList.add("ck-button");
+
+    const todoText = document.createElement("h2");
+    todoText.classList.add("todo-text");
+    todoText.innerHTML = txText;      
+
+    const buttonDelete = document.createElement("button");
+    buttonDelete.classList.add("delete-button");
+
+    alignContainer.appendChild(butttonCheck);
+    alignContainer.appendChild(todoText);
+
+    todo.appendChild(alignContainer);
+    todo.appendChild(buttonDelete);
+        
+    listItens.appendChild(todo);    
+
+    qtdTodo.innerHTML = (counter += 1);
+
+    newTodoEntry.focus();
+    clearNewTodo();
+}
 
 function btnEntryVisible(value) {
     if (value != "") {
