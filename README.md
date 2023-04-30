@@ -9,6 +9,7 @@ Nesse projeto irei desenvolver um app de "to do list", lista de afazeres. Esses 
 - [O Projeto](#o-projeto)
 - [O que aprendi](#o-que-aprendi)
 - [Screenshot](#screenshot)
+- [Updates](#updates)
 - [Construido com](#construido-com)
 - [Link](#link)
 
@@ -18,7 +19,7 @@ Durante o desenvolvimento dessa aplicação me deparei com alguns pontos onde ti
 
 ### Screenshot
 
-Abaixo estou deixando uma screenshot do resuldado de minha aplicação, nas duas versões de tema.
+Abaixo estou deixando um screenshot do resuldado de minha aplicação, nas duas versões de tema.
 
 ##### Dark:
 ![Screenshot da minha resolução](./design/screenshot-my-solution-dark.jpg)
@@ -27,9 +28,13 @@ Abaixo estou deixando uma screenshot do resuldado de minha aplicação, nas duas
 ##### Light:
 ![Screenshot da minha resolução](./design/screenshot-my-solution-light.jpg)
 
+### Updates
+
+Assim que publiquei esse projeto, um amigo sugeriu de fazer esse app guardar as informações no localStorage, então decidi implementar no projeto, para ampliar meus conhecimentos com essa ferramenta e também buscando uma melhoria para o app.
+
 ### Link
 
-No link você será direcionado para o deploy dessa aplicação em funcionamento:
+No link você será direcionado para o deploy desse App em funcionamento:
 
 - [To Do](https://todo-app-main-bay.vercel.app/)
 
