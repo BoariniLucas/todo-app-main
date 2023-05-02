@@ -37,7 +37,7 @@ Etapas:
 - [X] Criar Array para controle da lista de todo;
 - [X] Desenvolver função para salvar novos todo no localStorage;
 - [X] Criar função para excluir itens específicos da lista;
-- [ ] Desenvolver função para excluir todo completos do localStorage;
+- [X] Desenvolver função para excluir todo completos do localStorage;
 - [ ] Implementar função para manter todos completos salvos ao recarregar a página;
 
 

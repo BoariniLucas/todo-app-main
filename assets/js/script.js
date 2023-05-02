@@ -47,15 +47,13 @@ btnClearCompleted.addEventListener('click', (e) => {
     for( i=0; i< todo.length; i++ ) {
               
         if(todo[i].className == "item ok") {
-
-            console.log(todo);
-
-            /*
-            
+                  
+            todoArray.splice(i, 1); 
             todo[i].remove();
             i--;
             
-            qtdTodo.innerHTML = (counter -= 1);*/
+            saveLocalStorage();
+            qtdTodo.innerHTML = (counter -= 1);
         }
     }   
 });
