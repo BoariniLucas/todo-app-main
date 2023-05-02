@@ -13,6 +13,7 @@ const qtdTodo = document.querySelector('#qtd-todos');
 
 let theme = "dark";
 let counter = 0;
+let done = "";
 
 checkboxTheme.checked == false;
 
@@ -69,7 +70,7 @@ btnAddItem.addEventListener('click', (e) => {
 
         qtdTodo.innerHTML = (counter += 1);
         addNewTodo(textTodo);        
-        todoArray.push({counter, textTodo});
+        todoArray.push({done, textTodo});
         saveLocalStorage();
 
     }
@@ -102,10 +103,29 @@ listItens.addEventListener('click', (e) => {
 
     } else if(buttonPress.classList.contains("ck-button") ) {
 
-
         buttonPress.classList.toggle("done");
         todoItem.classList.toggle("done-text");
         todoItem.parentElement.classList.toggle("ok");
+
+        for (let i = 0; i < todoArray.length; i++) {
+
+            let message = todoArray[i].textTodo; 
+          
+            if(buttonPress.parentElement.classList.contains(message) &&
+            todoItem.parentElement.classList.contains("ok")) {
+
+                todoArray[i].done = "ok";
+                saveLocalStorage();
+
+            } 
+            
+            if(buttonPress.parentElement.classList.contains(message) &&
+                !todoItem.parentElement.classList. contains("ok")) {
+                    
+                todoArray[i].done = "";
+                saveLocalStorage();
+            }
+        }
     }
 });
 
@@ -161,17 +181,26 @@ checkboxTheme.addEventListener('change', () => {
 /*             ------------               */
 
 /* Add new todo function */
-function addNewTodo(txText) {
+function addNewTodo(txText, done) {
     
     const todo = document.createElement("div");
     todo.classList.add("item")
+    if (done == "ok") {
+        todo.classList.add("ok");
+    }
 
     const alignContainer = document.createElement("div");
     alignContainer.classList.add("align");
     alignContainer.classList.add(txText);
+    if (done == "ok") {
+        alignContainer.classList.add("done-text");
+    }
 
     const butttonCheck = document.createElement("button");
     butttonCheck.classList.add("ck-button");
+    if (done == "ok") {
+        butttonCheck.classList.add("done");
+    }
 
     const todoText = document.createElement("h2");
     todoText.classList.add("todo-text");
@@ -275,7 +304,8 @@ function loadPage() {
         
         for (let i = 0; i < todoArray.length; i++) {
 
-            addNewTodo(todoArray[i].textTodo);
+            addNewTodo(todoArray[i].textTodo, todoArray[i].done);
+            
             qtdTodo.innerHTML = todoArray.length;
             counter = todoArray.length;
         }
