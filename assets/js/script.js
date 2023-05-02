@@ -13,7 +13,16 @@ const qtdTodo = document.querySelector('#qtd-todos');
 
 let theme = "dark";
 let counter = 0;
+
 checkboxTheme.checked == false;
+
+let todoArray = new Array();
+
+
+///criar função para deletar item especifico da array;;
+
+
+loadPage();
 
 
 
@@ -38,11 +47,15 @@ btnClearCompleted.addEventListener('click', (e) => {
     for( i=0; i< todo.length; i++ ) {
               
         if(todo[i].className == "item ok") {
+
+            console.log(todo);
+
+            /*
             
             todo[i].remove();
             i--;
             
-            qtdTodo.innerHTML = (counter -= 1);
+            qtdTodo.innerHTML = (counter -= 1);*/
         }
     }   
 });
@@ -52,11 +65,15 @@ btnAddItem.addEventListener('click', (e) => {
     e.preventDefault();
     const addTodo = e.target;
 
-    if(addTodo.classList.contains("teste")) {
+    if(addTodo.classList.contains("todo-text")) {
 
         const textTodo = newTodoEntry.value;
 
-        addNewTodo(textTodo);
+        qtdTodo.innerHTML = (counter += 1);
+        addNewTodo(textTodo);        
+        todoArray.push({counter, textTodo});
+        saveLocalStorage();
+
     }
 });
 
@@ -68,12 +85,22 @@ listItens.addEventListener('click', (e) => {
     const buttonPress = e.target;
     const todoItem = buttonPress.closest("div");
     const todo = document.querySelector(".item");
-    const teste = document.querySelector(".todo-text");
 
     if(buttonPress.classList.contains("delete-button")) {
-        
-        todo.parentNode.removeChild(todoItem);
-        qtdTodo.innerHTML = (counter -= 1);
+
+        for (let i = 0; i < todoArray.length; i++) {
+
+            let message = todoArray[i].textTodo; 
+          
+            if(todoItem.firstChild.classList.contains(message)) {
+
+                todoArray.splice(i, 1);
+                todo.parentNode.removeChild(todoItem);
+                qtdTodo.innerHTML = (counter -= 1);
+                saveLocalStorage();
+
+            }
+        }
 
     } else if(buttonPress.classList.contains("ck-button") ) {
 
@@ -143,12 +170,14 @@ function addNewTodo(txText) {
 
     const alignContainer = document.createElement("div");
     alignContainer.classList.add("align");
+    alignContainer.classList.add(txText);
 
     const butttonCheck = document.createElement("button");
     butttonCheck.classList.add("ck-button");
 
     const todoText = document.createElement("h2");
     todoText.classList.add("todo-text");
+    todoText.setAttribute("id", "todo-text");
     todoText.innerHTML = txText;      
 
     const buttonDelete = document.createElement("button");
@@ -161,8 +190,6 @@ function addNewTodo(txText) {
     todo.appendChild(buttonDelete);
         
     listItens.appendChild(todo);    
-
-    qtdTodo.innerHTML = (counter += 1);
 
     newTodoEntry.focus();
     clearNewTodo();
@@ -231,4 +258,30 @@ function filterCompleted() {
             todo[i].style.display = "none";
         }
     }    
+}
+
+function saveLocalStorage() {    
+    
+    localStorage.setItem("todo", JSON.stringify(todoArray));
+}
+
+function loadPage() {
+
+    let todoListLocalStorage = localStorage.getItem("todo");
+
+    let todoListObj = JSON.parse(todoListLocalStorage);
+
+    if(todoListObj != null) {
+
+        todoArray = todoListObj;
+        
+        for (let i = 0; i < todoArray.length; i++) {
+
+            addNewTodo(todoArray[i].textTodo);
+            qtdTodo.innerHTML = todoArray.length;
+            counter = todoArray.length;
+        }
+
+        //console.log(todoArray);
+    }
 }

@@ -32,6 +32,15 @@ Abaixo estou deixando um screenshot do resuldado de minha aplicação, nas duas 
 
 Assim que publiquei esse projeto, um amigo sugeriu de fazer esse app guardar as informações no localStorage, então decidi implementar no projeto, para ampliar meus conhecimentos com essa ferramenta e também buscando uma melhoria para o app.
 
+Etapas:
+
+- [X] Criar Array para controle da lista de todo;
+- [X] Desenvolver função para salvar novos todo no localStorage;
+- [X] Criar função para excluir itens específicos da lista;
+- [ ] Desenvolver função para excluir todo completos do localStorage;
+- [ ] Implementar função para manter todos completos salvos ao recarregar a página;
+
+
 ### Link
 
 No link você será direcionado para o deploy desse App em funcionamento:
