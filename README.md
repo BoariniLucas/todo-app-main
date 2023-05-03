@@ -38,7 +38,7 @@ Etapas:
 - [X] Desenvolver função para salvar novos todo no localStorage;
 - [X] Criar função para excluir itens específicos da lista;
 - [X] Desenvolver função para excluir todo completos do localStorage;
-- [ ] Implementar função para manter todos completos salvos ao recarregar a página;
+- [X] Implementar função para manter todos completos salvos ao recarregar a página;
 
 
 ### Link
