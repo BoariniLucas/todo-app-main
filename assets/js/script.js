@@ -14,6 +14,7 @@ const qtdTodo = document.querySelector('#qtd-todos');
 let theme = "dark";
 let counter = 0;
 let done = "";
+let idTodo = 0;
 
 checkboxTheme.checked == false;
 
@@ -49,10 +50,11 @@ btnClearCompleted.addEventListener('click', (e) => {
               
         if(todo[i].className == "item ok") {
                   
-            todoArray.splice(i, 1); 
+            todoArray.splice(i, 1);
             todo[i].remove();
             i--;
-            
+
+            idTodo -= 1;
             saveLocalStorage();
             qtdTodo.innerHTML = (counter -= 1);
         }
@@ -68,11 +70,25 @@ btnAddItem.addEventListener('click', (e) => {
 
         const textTodo = newTodoEntry.value;
 
-        qtdTodo.innerHTML = (counter += 1);
-        addNewTodo(textTodo);        
-        todoArray.push({done, textTodo});
-        saveLocalStorage();
+        const index = todoArray[todoArray.length -1];
 
+        if(/*idTodo == 0*/todoArray.length == 0) {
+            idTodo = 1;
+            
+            qtdTodo.innerHTML = (counter += 1);
+            addNewTodo(idTodo, textTodo);        
+            todoArray.push({idTodo, done, textTodo});
+            saveLocalStorage();
+        } else {
+
+            idTodo = index.idTodo;           
+            idTodo += 1;
+
+            qtdTodo.innerHTML = (counter += 1);
+            addNewTodo(idTodo, textTodo);        
+            todoArray.push({idTodo, done, textTodo});
+            saveLocalStorage();
+        }
     }
 });
 
@@ -89,13 +105,14 @@ listItens.addEventListener('click', (e) => {
 
         for (let i = 0; i < todoArray.length; i++) {
 
-            let message = todoArray[i].textTodo; 
+            let id = todoArray[i].idTodo;  
           
-            if(todoItem.firstChild.classList.contains(message)) {
+            if(todoItem.firstChild.classList.contains(id)) {
 
                 todoArray.splice(i, 1);
                 todo.parentNode.removeChild(todoItem);
                 qtdTodo.innerHTML = (counter -= 1);
+                idTodo -= 1;
                 saveLocalStorage();
 
             }
@@ -109,17 +126,17 @@ listItens.addEventListener('click', (e) => {
 
         for (let i = 0; i < todoArray.length; i++) {
 
-            let message = todoArray[i].textTodo; 
+            let id = todoArray[i].idTodo; 
           
-            if(buttonPress.parentElement.classList.contains(message) &&
+            if(buttonPress.parentElement.classList.contains(id) &&
             todoItem.parentElement.classList.contains("ok")) {
-
+                
                 todoArray[i].done = "ok";
                 saveLocalStorage();
 
             } 
             
-            if(buttonPress.parentElement.classList.contains(message) &&
+            if(buttonPress.parentElement.classList.contains(id) &&
                 !todoItem.parentElement.classList. contains("ok")) {
                     
                 todoArray[i].done = "";
@@ -181,7 +198,7 @@ checkboxTheme.addEventListener('change', () => {
 /*             ------------               */
 
 /* Add new todo function */
-function addNewTodo(txText, done) {
+function addNewTodo(id, txText, done) {
     
     const todo = document.createElement("div");
     todo.classList.add("item")
@@ -191,7 +208,7 @@ function addNewTodo(txText, done) {
 
     const alignContainer = document.createElement("div");
     alignContainer.classList.add("align");
-    alignContainer.classList.add(txText);
+    alignContainer.classList.add(id);
     if (done == "ok") {
         alignContainer.classList.add("done-text");
     }
@@ -304,7 +321,7 @@ function loadPage() {
         
         for (let i = 0; i < todoArray.length; i++) {
 
-            addNewTodo(todoArray[i].textTodo, todoArray[i].done);
+            addNewTodo(todoArray[i].idTodo, todoArray[i].textTodo, todoArray[i].done);
             
             qtdTodo.innerHTML = todoArray.length;
             counter = todoArray.length;
